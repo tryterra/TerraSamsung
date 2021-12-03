@@ -1,4 +1,4 @@
-# Terra Samsung Library
+# Terra Samsung Library (ALPHA)
 
 Library built on Android Studio Artic Fox with Kotlin 1.6 (jvmTarget 1.8). This package targets a minimum Sdk version of 26. 
 
@@ -37,7 +37,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'com.google.android.libraries.healthdata:health-data-api:1.0.0-alpha01'
     implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation files('libs/TerraSamsung-alpha.aar')
+    implementation files('libs/TerraSamsung.aar')
 }
 ```
 
