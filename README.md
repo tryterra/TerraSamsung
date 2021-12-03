@@ -51,7 +51,7 @@ The requested permissions include: Location, Body Temperature, Respiratory Rate,
 
 ## Usage 
 
-The main class you will need within this package is the `Terra` (`co.tryterra.terra.Terra`) and `HealthStoreManager` (`co.tryterra.terra.HealthStoreManager`) classes and the `HealthDataClient` (`com.google.android.libraries.healthdata.HealthDataClient`) and `HealthDataService` (`com.google.android.libraries.healthdata.HealthDataService`) classes from the Health Platform API. 
+The main classes you will need within this package is the `Terra` (`co.tryterra.terra.Terra`) and `HealthStoreManager` (`co.tryterra.terra.HealthStoreManager`) classes and the `HealthDataClient` (`com.google.android.libraries.healthdata.HealthDataClient`) and `HealthDataService` (`com.google.android.libraries.healthdata.HealthDataService`) classes from the Health Platform API. 
 
 To get started, initialize a `HealthDataClient` from the Health Platform API package giving it a context:
 
