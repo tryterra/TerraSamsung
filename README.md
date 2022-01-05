@@ -112,3 +112,10 @@ The following function will push athlete data to your webhook URL. (No parameter
 terra.getAthlete()
 ```
 
+## Deauthenticate
+
+To deauthenticate users, you may run the following function:
+
+```kotlin
+terra.disconnect()
+```
