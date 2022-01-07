@@ -119,3 +119,55 @@ To deauthenticate users, you may run the following function:
 ```kotlin
 terra.disconnect()
 ```
+
+## Terra Endpoints
+
+This package also allows you to call the "authenticateUser" and "deauthenticateUser" endpoint along with the data request endpoints provided by [Terra API](https://docs.tryterra.co). 
+
+### Authenticate User and Deauthenticate User
+
+The `TerraAuth` class deals with these two endpoints. First you have to initiate one:
+
+```kotlin
+val terraAuthClient: TerraAuth = TerraAuth("YOUR X API KEY", "YOUR DEV ID")
+```
+
+and then call the following function:
+```kotlin
+terraAuthClient.authUser(RESOURCE){it ->
+    //Do something with the response
+        Log.i(TAG, it.toString())
+    }
+```
+Call back returns a [`JSONObject`](https://developer.android.com/reference/kotlin/org/json/JSONObject) type.
+
+Similarly for deauthentication:
+
+```kotlin
+terraAuthClient.deauthenticateUser(USER_ID)
+```
+
+### Data Endpoints
+
+To use the Terra API Data endpoints, you may do so with the `TerraClient` class:
+
+```kotlin
+val terraClient = TerraClient("USER ID", "YOUR X API KEY", "YOUR DEV ID")
+```
+
+Using this class, you can then request for data:
+
+```kotlin
+    terra.getBody(
+        startDate = Date.from(Instant.ofEpochMilli(startTime)).toInstant().epochSecond,
+        endDate = Date.from(Instant.ofEpochMilli(endTime)).toInstant().epochSecond,
+        toWebhook = false
+    ){bodyData ->
+        // Do something with body data
+        Log.i(TAG, bodyData.toString())
+    }
+```
+
+The other data functions would be : `getDaily`, `getActivity`, `getSleep`. These functions uses the same argument as the `getBody` function and all of them returns a callback with the response in [`JSONObject`](https://developer.android.com/reference/kotlin/org/json/JSONObject) format. The `toWebhook` argument defaults to `true` if not provided.
+
+Finally theres also `getAthlete` for which only accepts `toWebhook` argument.
