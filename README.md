@@ -155,7 +155,7 @@ To use the Terra API Data endpoints, you may do so with the `TerraClient` class:
 val terraClient = TerraClient("USER ID", "YOUR X API KEY", "YOUR DEV ID")
 ```
 
-Using this class, you can then request for data:
+Using this class, you can then request for data. The following example requests Body Data from our API with startDate and endDate parameters set as UNIX Timestamps in seconds. You may set "toWebhook" to false if you wish for the callback function to return the data payload.
 
 ```kotlin
     terra.getBody(
