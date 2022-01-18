@@ -139,7 +139,15 @@ terraAuthClient.authUser(RESOURCE){it ->
         Log.i(TAG, it.toString())
     }
 ```
-Call back returns a [`JSONObject`](https://developer.android.com/reference/kotlin/org/json/JSONObject) type.
+Call back returns an `AuthenticateUser` datamodel with the following fields:
+
+```kotlin
+data class AuthenticateUser(
+    var status: String,
+    var auth_url: String,
+    var user_id: String,
+)
+```
 
 Similarly for deauthentication:
 
@@ -168,6 +176,8 @@ Using this class, you can then request for data. The following example requests 
     }
 ```
 
-The other data functions would be : `getDaily`, `getActivity`, `getSleep`. These functions uses the same argument as the `getBody` function and all of them returns a callback with the response in [`JSONObject`](https://developer.android.com/reference/kotlin/org/json/JSONObject) format. The `toWebhook` argument defaults to `true` if not provided.
+The other data functions would be : `getDaily`, `getActivity`, `getSleep`. These functions uses the same argument as the `getBody` function and all of them returns a callback with their own datamodels. The `toWebhook` argument defaults to `true` if not provided.
+
+The data models correspond to having fields (exactly) the same as we the ones given by https://docs.tryterra.co/data-models
 
 Finally theres also `getAthlete` for which only accepts `toWebhook` argument.
