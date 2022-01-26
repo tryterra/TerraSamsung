@@ -67,7 +67,14 @@ private val store: HealthStoreManager = HealthStoreManager(healthDataStore)
 and finally a `Terra` class by:
 
 ```kotlin
-private val terra: Terra = Terra("YOUR_DEV_ID", "YOUR_X_API_KEY", this, store)
+private val terra: Terra = Terra("YOUR_DEV_ID", "YOUR_X_API_KEY", this, store, "A REFERENCE ID")
+```
+
+The reference ID is not a must pass, however if you wish to pass it, you can use it to associate users from your backend to the Terra user ID. You can access either of these properties as:
+
+```kotlin
+val user_id = terra.userId
+val reference_id = terra.referenceId
 ```
 
 Upon initializaion, the Terra class will automatically connect to Terra and start pushing Body, Daily and Sleep data every 8 hours, while activity data every 20 minutes (the default according to our [documentation](https://docs.tryterra.co/integrations). 
