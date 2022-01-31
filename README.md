@@ -70,6 +70,8 @@ and finally a `Terra` class by:
 private val terra: Terra = Terra("YOUR_DEV_ID", "YOUR_X_API_KEY", this, store, "A REFERENCE ID")
 ```
 
+The intiantiation or this class will throw an error if there is a connection error to our server, or if Health Platform service is not available on the device. Please catch this error and handle it properly on your application (Example application shows this).
+
 The reference ID is not a must pass, however if you wish to pass it, you can use it to associate users from your backend to the Terra user ID. You can access either of these properties as:
 
 ```kotlin
