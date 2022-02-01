@@ -1,8 +1,11 @@
-# Terra Samsung Library (ALPHA)
+# Terra Samsung Library (BETA)
 
 Library built on Android Studio Artic Fox with Kotlin 1.6 (jvmTarget 1.8). This package targets a minimum SDK version of 26 (Android OREO). 
 
 This library is intended for Android Developers wishing to connect their users to Terra through Samsung (Samsung Health). To use this package, please make sure the users have downloaded [Health Platform](https://play.google.com/store/apps/details?id=com.samsung.android.service.health&hl=en_GB&gl=US) on their devices and linked their Samsung Health Account to Health Platform. This can be done by going on Samsung Health -> Profile -> Settings -> Connected Services -> Health Platform and giving Health Platform access to their data. 
+
+## Demo Application
+You can find a DEMO application [here](https://github.com/tryterra/TerraSamsungDemo). Please note it is meant for demo purposes only, and you may reuse any code you wish on this demo. 
 
 ## Setup
 Please download the `.aar` file from this repository and include it within the `app/libs` folder in your project structure. You may now add it as a dependency in your gradle configuration files. In your project level gradle file (`build.gradle(:Project)`), edit the `repositories` to include:
@@ -81,7 +84,7 @@ val reference_id = terra.referenceId
 
 Upon initializaion, the Terra class will automatically connect to Terra and start pushing Body, Daily and Sleep data every 8 hours, while activity data every 20 minutes (the default according to our [documentation](https://docs.tryterra.co/integrations). 
 
-If you wish to customize this timer, you can set it by passing the parameter `bodySleepDailyTimer` and `activityTimer`in milliseconds to the Terra class upon initialization. 
+If you wish to customize this timer, you can set it by passing the parameters `bodyTimer`, `nutritionTimer`, `dailyTimer`, `sleepTimer`, and `activityTimer`in milliseconds to the Terra class upon initialization. **Make sure these values are divisible by 60000 (1 minute)**. Please refer to the demo application for example. 
 
 ## Manual Query
 
@@ -112,6 +115,13 @@ terra.getDaily(startDate: Date, endDate: Date)
 ```kotlin
 terra.getActivity(startDate: Date, endDate: Date)
 ```
+
+### Nutrition Data
+
+```kotlin
+terra.getNutrition(startDate: Date, endDate: Date)
+```
+
 
 The following function will push athlete data to your webhook URL. (No parameters required)
 
@@ -185,7 +195,7 @@ Using this class, you can then request for data. The following example requests 
     }
 ```
 
-The other data functions would be : `getDaily`, `getActivity`, `getSleep`. These functions uses the same argument as the `getBody` function and all of them returns a callback with their own datamodels. The `toWebhook` argument defaults to `true` if not provided.
+The other data functions would be : `getDaily`, `getActivity`, `getSleep`, `getNutrition`. These functions uses the same argument as the `getBody` function and all of them returns a callback with their own datamodels. The `toWebhook` argument defaults to `true` if not provided.
 
 The data models correspond to having fields (exactly) the same as we the ones given by https://docs.tryterra.co/data-models
 
