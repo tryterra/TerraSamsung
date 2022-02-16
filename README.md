@@ -81,6 +81,20 @@ The reference ID is not a must pass, however if you wish to pass it, you can use
 val user_id = terra.userId
 val reference_id = terra.referenceId
 ```
+You can also customize the permissions requested to a certain extend. By default we provide 6 different sets of permissions tailored for each endpoint as enums (`ATHLETE`, `ACTIVITY`, `DAILY`, `SLEEP`, `DAILY`, `NUTRITION`). You can access these through the enum class: `HealthPermissions`.
+To customise the requested permissions, intantiate the `Terra` class with a set of these enums. For example:
+
+```kotlin
+terra = Terra(
+    devId,
+    XAPIKey,
+    this,
+    store,
+    referenceId = "testingRef",
+    permissions = setOf(HealthPermissions.ACTIVITY, HealthPermissions.BODY)
+)
+```
+This will cause it to only request for permissions required for the Activity and Body endpoint. 
 
 Upon initializaion, the Terra class will automatically connect to Terra and start pushing Body, Daily and Sleep data every 8 hours, while activity data every 20 minutes (the default according to our [documentation](https://docs.tryterra.co/integrations). 
 
