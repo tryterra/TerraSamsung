@@ -1,4 +1,6 @@
-# Terra Samsung Library (BETA)
+# Terra Samsung Library
+
+## !!DEPRECATED: Please use [TerraAndroid](https://github.com/tryterra/TerraAndroid) instead!!
 
 Library built on Android Studio Artic Fox with Kotlin 1.6 (jvmTarget 1.8). This package targets a minimum SDK version of 26 (Android OREO). 
 
